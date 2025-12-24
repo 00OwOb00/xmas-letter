@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>紀錄檔案</title>
+    <title>聖誕快樂</title>
     <style>
         * {
             margin: 0;
@@ -154,7 +154,7 @@
             letter-spacing: 2px;
         }
 
-        /* 封面頁樣式 */
+        /* 青卿頁樣式 */
         .cover-page {
             display: flex;
             flex-direction: column;
@@ -642,10 +642,10 @@
 
     <div class="container">
         <div class="folder">
-            <div class="folder-title">✨ 紀錄檔案</div>
+            <div class="folder-title">✨ 聖誕快樂</div>
             
             <div class="tabs-container">
-                <div class="tab active" onclick="showTab(0)">封面</div>
+                <div class="tab active" onclick="showTab(0)">青卿</div>
                 <div class="tab" onclick="showTab(1)">初見</div>
                 <div class="tab" onclick="showTab(2)">經典</div>
                 <div class="tab" onclick="showTab(3)">珍貴</div>
@@ -653,20 +653,20 @@
                 <div class="tab" onclick="showTab(5)">期盼</div>
             </div>
 
-            <!-- 封面頁 -->
+            <!-- 青卿頁 -->
             <div class="content-area active" id="content-0">
                 <div class="cover-page">
                     <div class="cover-image-container">
                         <div class="cover-placeholder" id="cover-placeholder">
                             <p>📷</p>
-                            <p>點擊下方按鈕上傳封面圖片</p>
+                            <p>點擊下方按鈕上傳青卿圖片</p>
                         </div>
-                        <img id="cover-image" class="cover-image" alt="封面圖片">
+                        <img id="cover-image" class="cover-image" alt="青卿圖片">
                         <div class="cover-text">To my love</div>
                     </div>
                     <input type="file" id="cover-upload" accept="image/*" style="display: none;" onchange="uploadCoverImage(this)">
                     <button class="upload-cover-btn" onclick="document.getElementById('cover-upload').click()">
-                        📷 上傳封面圖片
+                        📷 上傳青卿圖片
                     </button>
                 </div>
             </div>
@@ -696,7 +696,7 @@
                 </div>
 
                 <div class="envelope-container">
-                    <div class="envelope-label">💝 訪客留言</div>
+                    <div class="envelope-label">💝 哥哥的話</div>
                     <div class="envelope" onclick="toggleEnvelope('visitor-1')">
                         <div class="envelope-back">
                             <div class="envelope-flap"></div>
@@ -745,7 +745,7 @@
                 </div>
 
                 <div class="envelope-container">
-                    <div class="envelope-label">💝 訪客留言</div>
+                    <div class="envelope-label">💝 哥哥的話</div>
                     <div class="envelope" onclick="toggleEnvelope('visitor-2')">
                         <div class="envelope-back">
                             <div class="envelope-flap"></div>
@@ -794,7 +794,7 @@
                 </div>
 
                 <div class="envelope-container">
-                    <div class="envelope-label">💝 訪客留言</div>
+                    <div class="envelope-label">💝 哥哥的話</div>
                     <div class="envelope" onclick="toggleEnvelope('visitor-3')">
                         <div class="envelope-back">
                             <div class="envelope-flap"></div>
@@ -843,7 +843,7 @@
                 </div>
 
                 <div class="envelope-container">
-                    <div class="envelope-label">💝 訪客留言</div>
+                    <div class="envelope-label">💝 哥哥的話</div>
                     <div class="envelope" onclick="toggleEnvelope('visitor-4')">
                         <div class="envelope-back">
                             <div class="envelope-flap"></div>
@@ -892,7 +892,7 @@
                 </div>
 
                 <div class="envelope-container">
-                    <div class="envelope-label">💝 訪客留言</div>
+                    <div class="envelope-label">💝 哥哥的話</div>
                     <div class="envelope" onclick="toggleEnvelope('visitor-5')">
                         <div class="envelope-back">
                             <div class="envelope-flap"></div>
@@ -955,7 +955,7 @@
 
         createStars();
 
-        // 上傳封面圖片
+        // 上傳青卿圖片
         function uploadCoverImage(input) {
     if (input.files && input.files[0]) {
         const reader = new FileReader();
@@ -971,7 +971,7 @@
             // 儲存到 Firebase
             database.ref('cover-image').set(imageData)
                 .then(() => {
-                    console.log('封面圖片已上傳到 Firebase');
+                    console.log('青卿圖片已上傳到 Firebase');
                 })
                 .catch((error) => {
                     console.error('上傳失敗:', error);
@@ -1078,7 +1078,7 @@ function loadVisitorContent(index) {
             if (data) {
                 const display = document.getElementById('visitor-display-' + index);
                 
-                let html = '<h3 style="color: #ff8fb8; margin-bottom: 15px;">💌 最新訪客留言</h3>';
+                let html = '<h3 style="color: #ff8fb8; margin-bottom: 15px;">💌 最新哥哥的話</h3>';
                 if (data.image) {
                     html += '<img src="' + data.image + '" class="preview-image">';
                 }
@@ -1117,7 +1117,7 @@ function loadMyContent(index) {
         });
 }
 
-// 從 Firebase 載入封面圖片
+// 從 Firebase 載入青卿圖片
 function loadCoverImage() {
     database.ref('cover-image').once('value')
         .then((snapshot) => {
@@ -1131,13 +1131,13 @@ function loadCoverImage() {
             }
         })
         .catch((error) => {
-            console.error('載入封面失敗:', error);
+            console.error('載入青卿失敗:', error);
         });
 }
 
  // 頁面載入時執行
 window.onload = function() {
-    // 載入封面圖片
+    // 載入青卿圖片
     loadCoverImage();
     
     // 載入所有頁面的內容
@@ -1151,3 +1151,4 @@ window.onload = function() {
     </script>
 </body>
 </html>
+
